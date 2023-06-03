@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: service-registry
+  config:
+    import: "optional:configserver:http://localhost:8088"
 
 eureka:
   instance:
