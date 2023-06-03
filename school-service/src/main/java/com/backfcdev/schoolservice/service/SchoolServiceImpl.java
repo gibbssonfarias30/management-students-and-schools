@@ -30,20 +30,20 @@ public class SchoolServiceImpl implements ISchoolService{
     }
 
     @Override
-    public School findById(Long id) {
+    public School findById(Integer id) {
         return schoolRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
-    public School update(Long id, School school) {
+    public School update(Integer id, School school) {
         schoolRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
         return schoolRepository.save(school);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Integer id) {
         schoolRepository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
         schoolRepository.deleteById(id);
@@ -51,7 +51,7 @@ public class SchoolServiceImpl implements ISchoolService{
 
     @Override
     public FullSchoolResponse findSchoolWithStudents(Integer schoolId) {
-        var school = schoolRepository.findById(Long.valueOf(schoolId))
+        var school = schoolRepository.findById(schoolId)
                 .orElseThrow(EntityNotFoundException::new);
 
         var students = studentClient.findAllStudentsBySchool(schoolId);

@@ -32,7 +32,7 @@ public class SchoolController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<School> findById(@PathVariable Long id){
+    ResponseEntity<School> findById(@PathVariable Integer id){
         return ResponseEntity.ok(schoolService.findById(id));
     }
 
